@@ -1,0 +1,127 @@
+/* 自定义动画 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 卡通风格增强 */
+.age-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+}
+
+.age-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    animation: pulse-glow 2s infinite;
+}
+
+.age-card .text-4xl {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 主题切换动画 */
+[data-theme="dark"] {
+    transition: all 0.3s ease;
+}
+
+/* 彩虹背景动画 */
+.rainbow-bg {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: rainbow 15s ease infinite;
+}
+
+/* 互动按钮样式 */
+.interactive-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.interactive-btn:hover::before {
+    left: 100%;
+}
+
+/* 标签页动画 */
+.tab {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.tab-active {
+    transform: scale(1.05);
+}
+
+/* 模态框动画 */
+.modal-box {
+    border-radius: 20px;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .age-card {
+        margin-bottom: 1rem;
+    }
+    
+    .hero {
+        min-height: 300px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .navbar, .modal, .btn {
+        display: none !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #e5e7eb;
+    }
+}
